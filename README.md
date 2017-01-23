@@ -1,4 +1,5 @@
-# docker-wp-nginx-mysql-php7-ssh
+# Wordpress 4.7.1 alap telepítése
+### nginx, php7.0, mysql, ssh és supervisor csomagokkal
 ## /// Install Docker.io ///
 ```
 apt-get update
