@@ -15,6 +15,7 @@ if [ ! -f /wordpress-db-pw.txt ]; then
     mysqladmin -u root password $MYSQL_PASSWORD
     mysql -uroot -p$MYSQL_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' IDENTIFIED BY '$WORDPRESS_PASSWORD'; FLUSH PRIVILEGES;"
+    mysql -uroot -p$MYSQL_PASSWORD -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'%' IDENTIFIED BY '$WORDPRESS_PASSWORD'; FLUSH PRIVILEGES;"
     killall mysqld
 fi
 
@@ -36,11 +37,11 @@ if [ ! -f /var/www/wp-config.php ]; then
     # Remove unused plugins
     rm /var/www/wp-content/plugins/hello.php
 
-    # Download nginx helper plugin
+    # Download W3 Total cache plugin
     curl -O `curl -i -s https://wordpress.org/plugins/w3-total-cache/ | egrep -o "https://downloads.wordpress.org/plugin/[^']+"`
     unzip -o wo3-total-cache.*.zip -d /var/www/wp-content/plugins
 
-    # Download W3 Total cache plugin
+    # Download nginx helper plugin
     curl -O `curl -i -s https://wordpress.org/plugins/nginx-helper/ | egrep -o "https://downloads.wordpress.org/plugin/[^']+"`
     unzip -o nginx-helper.*.zip -d /var/www/wp-content/plugins
 
@@ -63,5 +64,5 @@ ENDL
 
 fi
 
-# start all the services
+# Szolgáltatások elindítása
 /usr/local/bin/supervisord -n -c /etc/supervisord.conf
