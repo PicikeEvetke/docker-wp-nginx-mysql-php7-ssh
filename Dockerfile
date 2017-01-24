@@ -89,7 +89,7 @@ VOLUME ["/var/lib/mysql", "/var/www", "/var/run/sshd"]
 WORKDIR /var/www
 
 # portmappek beállítása
-EXPOSE 3306 80 22
+EXPOSE 9011 3306 80 22
 
 # Supervisord elindítása
 CMD ["/bin/bash", "/start.sh"]
