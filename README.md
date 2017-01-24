@@ -31,7 +31,7 @@ docker stop [CONTAINER_ID]
 - Indítás: docker run -d -p 3307:3306 -p 80:80 -p 2222:22 -p 9011:9011 adalonwp
 - web: http://localhost *(vagy vedd fel a domain címét a host fileba, pl. 127.0.0.1 adalon.hu www.adalon.hu)*
 - ssh és winscp: 127.0.0.1:2222-es porton *(wordpress/wordpress)*
-- mysql: 127.0.0.1:3307 *(jelszó generált, kiolvasható innen /var/www/wp-config.php)*
+- mysql: 127.0.0.1:3307 *(jelszó generált, kiolvasható a docker konténerből innen mysql-root-pw.txt és /wordpress-db-pw.txt)*
 
 ### Docker kipucolása
 ```
